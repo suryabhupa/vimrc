@@ -26,10 +26,10 @@ filetype plugin indent on    " required
 " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
 "
 " see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line 
+" Put your non-Plugin stuff after this line
 
 ""
-"Plugins for vim: 
+"Plugins for vim:
 	" syntastic
 	" NERDTree
 	" vim-airline
@@ -41,31 +41,33 @@ call pathogen#infect()
 set lazyredraw
 set laststatus=2
 
-set guifont=Source\ Code\ Pro\ for\ Powerline
+" set guifont=Source\ Code\ Pro\ for\ Powerline
+set guifont=Meslo\ LG\ M\ DZ\ Regular\ for\ Powerline
 set encoding=utf-8
-let g:airline_theme  			= 'molokai'
-let g:airline_enable_branch		= 1
-" let g:airline_enable_syntastic 	= 1
-let g:airline_powerline_fonts 	= 1
+let g:airline_theme	= 'solarized'
+let g:airline_enable_branch	= 1
+let g:airline_enable_syntastic = 1
+let g:airline_powerline_fonts	= 1
 let g:Powerline_symbols = 'fancy'
 
 if !exists('g:airline_symbols')
 	let g:airline_symbols = {}
 endif
 
+" No longer need this garbage with the right font! (Go Meslo)
 " unicode symbols
 " let g:airline_left_sep = '»'
- let g:airline_left_sep = '▶'
+" let g:airline_left_sep = '▶'
 " let g:airline_right_sep = '«'
- let g:airline_right_sep = '◀'
- let g:airline_symbols.linenr = '␊'
- let g:airline_symbols.linenr = '␤'
+" let g:airline_right_sep = '◀'
+" let g:airline_symbols.linenr = '␊'
+" let g:airline_symbols.linenr = '␤'
 " let g:airline_symbols.linenr = '¶'
- let g:airline_symbols.branch = '⎇'
- let g:airline_symbols.paste = 'ρ'
- let g:airline_symbols.paste = 'Þ'
- let g:airline_symbols.paste = '∥'
- let g:airline_symbols.whitespace = 'Ξ'
+" let g:airline_symbols.branch = '⎇'
+ " let g:airline_symbols.paste = 'ρ'
+ " let g:airline_symbols.paste = 'Þ'
+ " let g:airline_symbols.paste = '∥'
+ " let g:airline_symbols.whitespace = 'Ξ'
 
 " show multiple buffers in same tab
 let g:airline#extensions#tabline#enabled = 1
@@ -137,7 +139,7 @@ set t_Co=256
 " set background=dark
 
 " set smartindent
-set smartindent 
+set smartindent
 set autoindent
 
 " Unsets the last search pattern register by hitting return
@@ -162,7 +164,7 @@ nmap <Leader>bl :ls<CR>
 
 " vim-latex suite settings
 filetype plugin on
-filetype indent on 
+filetype indent on
 set shellslash
 set grepprg=grep\ -nH\ $*
 let g:tex_flavor='latex'
@@ -221,10 +223,10 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 " set background=light
 " colorscheme primary
 " colorscheme base16-default
-" colorscheme solarized
+colorscheme solarized
 set background=dark
 " colorscheme hybrid
-colorscheme gruvbox
+" colorscheme gruvbox
 
 set	noexpandtab
 set visualbell
@@ -237,4 +239,8 @@ set tabstop=2
 set shiftwidth=2
 
 set softtabstop=2
-set expandtab 
+set expandtab
+
+" Automatically remove trailing whitespace
+autocmd FileType c,cpp,java,php,python,markdown,matlab,lua,javascript,html,vim,zsh,sh autocmd BufWritePre <buffer> %s/\s\+$//e
+
