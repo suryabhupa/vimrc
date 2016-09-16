@@ -64,10 +64,10 @@ endif
 " let g:airline_symbols.linenr = '␤'
 " let g:airline_symbols.linenr = '¶'
 " let g:airline_symbols.branch = '⎇'
- " let g:airline_symbols.paste = 'ρ'
- " let g:airline_symbols.paste = 'Þ'
- " let g:airline_symbols.paste = '∥'
- " let g:airline_symbols.whitespace = 'Ξ'
+" let g:airline_symbols.paste = 'ρ'
+" let g:airline_symbols.paste = 'Þ'
+" let g:airline_symbols.paste = '∥'
+" let g:airline_symbols.whitespace = 'Ξ'
 
 " show multiple buffers in same tab
 let g:airline#extensions#tabline#enabled = 1
@@ -77,6 +77,63 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
 " disable silly LaTeX magical additions
 let g:Imap_UsePlaceHolders = 0
 let g:Imap_FreezeImap=1
+
+" vim-latex suite settings
+filetype plugin on
+filetype indent on
+set shellslash
+set grepprg=grep\ -nH\ $*
+let g:tex_flavor='latex'
+set pastetoggle=<F2>
+
+func! WordProcessorMode()
+    setlocal formatoptions=t1
+    setlocal textwidth=80
+    map j gj
+    map k gk
+    setlocal smartindent
+    setlocal spell spelllang=en_us
+    setlocal noexpandtab
+endfu
+au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
+
+"Misc"
+nnoremap S :SyntasticToggleMode<CR>
+nnoremap SC :SyntasticCheck<CR>
+" map N :NERDTree<CR>
+map NT :NERDTreeToggle<CR>
+map NS :NERDTreeMirror<CR>
+map NQ :NERDTreeClose<CR>
+map NB :Bookmark<Space>
+map NBO :OpenBookmark<CR>
+map NBQ :ClearAllBookmarks<CR>
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_loc_list_height = 3
+
+"Nerdtree
+" autocmd vimenter * NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
+""" Requires colors """
+" set background=light
+" colorscheme primary
+" colorscheme base16-default
+" colorscheme hybrid
+" colorscheme gruvbox
+colorscheme solarized
+set background=dark
+
+"""""" ------------------------------------------- """"""
+"""""" Barebones Vim settings without any packages """"""
+"""""" ------------------------------------------- """"""
 
 " Make Vim more useful
 set nocompatible
@@ -131,16 +188,12 @@ set showcmd
 
 " Start scrolling three lines before the horizontal window border
 set scrolloff=2
-"
+
 " enable 256 colors
 set t_Co=256
 
 " syntax enable
 " set background=dark
-
-" set smartindent
-set smartindent
-set autoindent
 
 " Unsets the last search pattern register by hitting return
 nnoremap <CR> :noh<CR><CR>
@@ -162,25 +215,6 @@ nmap <Leader>bq :bp <BAR> bd #<CR>
 "Show all open buffers and their status
 nmap <Leader>bl :ls<CR>
 
-" vim-latex suite settings
-filetype plugin on
-filetype indent on
-set shellslash
-set grepprg=grep\ -nH\ $*
-let g:tex_flavor='latex'
-set pastetoggle=<F2>
-
-func! WordProcessorMode()
-    setlocal formatoptions=t1
-    setlocal textwidth=80
-    map j gj
-    map k gk
-    setlocal smartindent
-    setlocal spell spelllang=en_us
-    setlocal noexpandtab
-endfu
-au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
-
 "Buffer mappings"
 nnoremap <C-Up> <C-W><C-J>
 nnoremap <C-Down> <C-W><C-K>
@@ -195,42 +229,11 @@ nnoremap [v :vsplit<Space>
 nnoremap [s :set splitright<CR>
 nnoremap [ns :set nosplitright<CR>
 
-"Misc"
-nnoremap S :SyntasticToggleMode<CR>
-nnoremap SC :SyntasticCheck<CR>
-" map N :NERDTree<CR>
-map NT :NERDTreeToggle<CR>
-map NS :NERDTreeMirror<CR>
-map NQ :NERDTreeClose<CR>
-map NB :Bookmark<Space>
-map NBO :OpenBookmark<CR>
-map NBQ :ClearAllBookmarks<CR>
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_loc_list_height = 3
-
-"Nerdtree
-" autocmd vimenter * NERDTree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-
-" set background=light
-" colorscheme primary
-" colorscheme base16-default
-colorscheme solarized
-set background=dark
-" colorscheme hybrid
-" colorscheme gruvbox
-
-set	noexpandtab
+set noexpandtab
 set visualbell
 set spell
+set smartindent
+set autoindent
 
 " size of a hard tabstop
 set tabstop=2
