@@ -194,6 +194,7 @@ set t_Co=256
 
 " syntax enable
 " set background=dark
+colorscheme zellner
 
 " Unsets the last search pattern register by hitting return
 nnoremap <CR> :noh<CR><CR>
