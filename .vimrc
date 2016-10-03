@@ -232,9 +232,11 @@ nnoremap [ns :set nosplitright<CR>
 
 set noexpandtab
 set visualbell
-set spell
 set smartindent
 set autoindent
+
+" Set spellcheck on/off
+" set spell
 
 " size of a hard tabstop
 set tabstop=2
@@ -248,3 +250,5 @@ set expandtab
 " Automatically remove trailing whitespace
 autocmd FileType c,cpp,java,php,python,markdown,matlab,lua,javascript,html,vim,zsh,sh autocmd BufWritePre <buffer> %s/\s\+$//e
 
+" Set color column at 80 chars
+set colorcolumn=80
