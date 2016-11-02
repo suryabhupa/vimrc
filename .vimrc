@@ -252,3 +252,7 @@ autocmd FileType c,cpp,java,php,python,markdown,matlab,lua,javascript,html,vim,z
 
 " Set color column at 80 chars
 set colorcolumn=80
+highlight ColorColumn ctermbg=12
+
+" Set relative numbering
+set relativenumber
