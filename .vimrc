@@ -256,3 +256,6 @@ highlight ColorColumn ctermbg=12
 
 " Set relative numbering
 set relativenumber
+
+" Set visual bell off
+set vb t_vb=
